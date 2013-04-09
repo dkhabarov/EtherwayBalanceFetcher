@@ -24,35 +24,15 @@ Windows XP:
 Или http://www.python.org/ftp/python/2.7.3/pyt...2.7.3.amd64.msi
 Устанавливаем в C:\Python27\
 Берём с репозитория etherway.py и сохраняем в C:\Python27\Lib\etherway.py
-При сохранении обязательно указать кодировку UTF8!!!
-Берём с репозитория example.py и сохраняем например в C:\ (При сохранении обязательно указать кодировку UTF8!!!)
-Открываем example.py,
-В самой первой строчке меняем
-#!python
-
-#!/usr/bin/env python
-
-
-На:
-
-#!python
-
-#!C:\Python27\python.exe
-
-
+Открываем example.py
 В строчке
-
-#!python
-
 EtherwayBalance=etherway.EtherwayBalanceFetcher(login="pnumber", password="mygoodpassword")
-
 
 Вписываем свой логин и пароль.
 Пуск-выполнить cmd:
 
 cd C:\
 example.py
-
 
 Ждём пару секунд и если всё сделали правильно, нам покажет наш баланс. 8)
 
