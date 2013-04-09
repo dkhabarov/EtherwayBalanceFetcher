@@ -10,9 +10,9 @@ example* - скрипты можно уже использовать для вывода баланса например на рабочий
 А можем прикрутить даже всё это дело к Nagios, Munin etc. Всё зависит только от вашего воображения. 8)
 
 Кстати, перед запуском не забываем указывать в example скриптах:
-#!python
+
 EtherwayBalance=etherway.EtherwayBalanceFetcher(login="pnumber", password="mygoodpassword")
-#!python
+
 EtherwayBalance=etherwaypy3.EtherwayBalanceFetcher(login="pnumber", password="mygoodpass")
 
 Вместо pnumber - логин к личному кабинету, вместо mygoodpass пароль.
