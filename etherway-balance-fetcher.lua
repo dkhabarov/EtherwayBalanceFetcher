@@ -171,7 +171,7 @@ function get_home_path()
 	elseif _os == 2 then
 		home = os.getenv("USERPROFILE")
 	else 
-		os.exit(_EXIT_ERRUSE)
+		os.exit(1)
 	end
 	return home
 end
