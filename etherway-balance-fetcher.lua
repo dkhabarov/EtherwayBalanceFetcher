@@ -77,7 +77,7 @@ function get(login, password)
 				if tResponse[3] and tResponse[3]:len() > 0 then
 					local balance = tResponse[3]:match('<div id=\'balance\'>(.+)</div>')
 					if balance and balance:len() > 0 then
-						local balance_val = balance:match('<span class=green>(.+)</span')
+						local balance_val = balance:match('<span class=%S+>(.+)</span')
 						if balance_val then
 							return 0, balance_val
 						else
