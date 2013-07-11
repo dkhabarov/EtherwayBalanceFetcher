@@ -39,9 +39,10 @@ class QueryError(Exception):
 		return repr(self.value)
 
 class EtherwayBalanceFetcher:
-	def __init__(self, login, password):
+	def __init__(self, login, password, timeout = 10):
 		self.login = login
 		self.password = password
+		self.timeout = timeout
 		if self.login is None:
 			raise QueryError("Please enter login!")
 		if self.password is None:
@@ -52,7 +53,7 @@ class EtherwayBalanceFetcher:
 		params = urllib.parse.urlencode({'LoginForm[username]': self.login, 'LoginForm[password]': self.password})
 		req = urllib.request.Request('https://lk.etherway.ru/site/login', params.encode())
 		try:
-			result = urllib.request.urlopen(req)
+			result = urllib.request.urlopen(req,timeout = self.timeout)
 		except (urllib.request.URLError,urllib.request.HTTPError) as errstr:
 			raise QueryError(errstr)
 		text = result.read()
@@ -61,7 +62,10 @@ class EtherwayBalanceFetcher:
 	def get_balance(self):
 		source = self.auth()
 		if source:
-			sbalobj=re.search("<div id='balance'>.+<span class=green>(.+)</span>",source)
-			balance=sbalobj.group(1).split(" ")
-			if balance[0] is not None: 
-				return balance[0]
+			sbalobj=re.search("<div id='balance'>.+<span class=\S+>(.+)</span>", source)
+			if sbalobj is not None:
+				balance=sbalobj.group(1).split(" ")
+				if balance[0] is not None:				
+					return balance
+			else:
+				raise QueryError('Not found')
