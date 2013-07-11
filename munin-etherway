@@ -2,7 +2,7 @@
 #-*- coding: utf8 -*-
 # MuninEtherway - Simple plugin for Munin Monitoring
 
-# Copyright © 2012 Denis 'Saymon21' Khabarov
+# Copyright © 2013 Denis 'Saymon21' Khabarov
 # E-Mail: saymon at hub21 dot ru (saymon@hub21.ru)
 
 # This program is free software: you can redistribute it and/or modify
@@ -19,7 +19,9 @@
 
 
 '''
-Config for /etc/munin/plugin-conf.d/munin-node:
+To eneble plugin run: sudo ln -s /usr/share/munin/plugins/etherway /etc/munin/plugins/etherway
+
+And config for /etc/munin/plugin-conf.d/munin-node:
 
 [etherway]
 	env.ETHERWAY_USER pUSERID
